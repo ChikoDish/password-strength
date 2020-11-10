@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+const { default: StrengthMeter } = require("./components/StrengthMeter");
 
 function App() {
+  const [password, setPassword] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="col-md-6 mx-auto text-right">
+        <h3 className="text-center my-5">Password Strength Cheaker</h3>
+        <div className="form-group">
+          <input
+            type="password"
+            className="form-control shadow-none"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <StrengthMeter password={password} />
+      </div>
     </div>
   );
 }
